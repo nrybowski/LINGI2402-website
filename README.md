@@ -31,6 +31,13 @@ It leverages `eBPF` and kernel probes (kprobes) tracing in the `MPTCPv1` Linux k
 They collect some data and send them back to the user-space through perf buffers.
 The user-space utility then formats the events according to the proposed QLOG format and dumps them in files with the JSON format.
 
+#### Test environment
+
+A custom testing environment is implemented to run the prototype.
+It is composed of two Docker containers, each running an `MPTCPv1` Linux kernel instance through the `virtme` tool.
+One of them acts as a server and the other one as a client.
+Each VM has three tap-tun network interfaces bridged on the container interface, allowing multipath usage when MPTCP is enabled.
+
 #### Format sample
 
 Here is a sample of the current client-side view of the 3-way handshakes form a 3-subflows MPTCP connection.
